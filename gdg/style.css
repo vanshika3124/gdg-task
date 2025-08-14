@@ -1,0 +1,243 @@
+:root {
+    --poke-red: #EF5350;
+    --poke-blue: #29B6F6;
+    --poke-yellow: #FFCA28;
+    --poke-green: #66BB6A;
+    --dark-grey: #333;
+    --light-grey: #f0f0f0;
+}
+
+body{
+    font-family: 'Press Start 2P' , cursive;
+    background-color: var(--light-grey);
+    color: var(--dark-grey);
+    text-align: center;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+h1 {
+    color: var(--poke-red);
+    font-size: 2rem;
+    text-shadow: 2px 2px black;
+    margin-bottom: 20px;
+    border: 3px solid var(--dark-grey);
+}
+
+.scoreboard {
+    background: white;
+    padding: 15px 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+    border: 3px solid var(--dark-grey);
+}
+
+.scoreboard h2{
+    margin: 0 0 10px 0;
+    font-size: 1.2rem;
+}
+
+.scoreboard p{
+    margin: 5px;
+    font-size: 1rem;
+}
+
+.search-container{
+    margin-bottom: 20px;
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+}
+#pokemon-search{
+    width:100%;
+    padding:10px;
+    font-family: 'Press Start 2P' , cursive;
+    border: 2px solid var(--dark-grey);
+    border-radius: 5px;
+    font-size: 0.8rem;
+}
+
+#suggestions-box{
+    position: absolute;
+    width: 100%;
+    background: white;
+    border: 1px solid #ccc;
+}
+
+.suggestion-item{
+    padding: 10px;
+    cursor:pointer;
+    text-transform: capitalize;
+    border-bottom: 1px solid #eee;
+}
+
+.suggestion-item:hover{
+    background-color: var(--poke-yellow);
+}
+
+#game-container{
+    display:flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+    flex-wrap: wrap;
+    width:100%;
+}
+
+.pokemon-card{
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    padding: 20px;
+    width: 280px;
+    border: 4px solid var(--dark-grey);
+    transition: transform 0.3s , box-shadow 0.3s;
+    position:relative;
+}
+
+.pokemon-card.shake{
+    animation: shake 0.5s;
+}
+@keyframes shake{
+    0%, 100% { transform: translateX(0);}
+    25% { transform: translateX(-5px);}
+    75% {transform: translateX(5px);}
+}
+
+.pokemon-card.roll-indicator{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: var(--poke-yellow);
+    color: var(--dark-grey);
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.7rem;
+    border: 2px solid var(--dark-grey);
+}
+
+.pokemon-card.round-wins{
+    position: absolute;
+    top: 10px;
+    left:10px;
+    font-size: 1.5rem;
+}
+
+.pokemon-card img{
+    width:150px;
+    height:150px;
+    background-color: #eee;
+    border-radius: 50%;
+    border: 4px solid var(--dark-grey);
+    image-rendering: pixelated;
+}
+
+.pokemon-card h3{
+    text-transform: capitalize;
+    margin: 10px 0;
+    font-size: 1.2rem;
+}
+
+.stats p{
+    margin:8px 0;
+    padding:8px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    transition: all 0.4s ease-in-out;
+    border: 2px solid var(--light-grey);
+}
+
+.stats .winner{
+    background-color: var(--poke-green) !important;
+    color:white;
+    transform: scale(1.1);
+    border-color: var(--dark-grey);
+}
+
+.stats .loser{
+    opacity: 0.6;
+}
+
+#battle-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 220px;
+    align-self: center;
+}
+#message-area {
+    font-size: 1rem;
+    height: 60px;
+    color: var(--poke-red);
+    font-weight: bold;
+}
+#battle-btn, #next-round-btn{
+    background-color: var(--poke-red);
+    color: white;
+    border: 2px solid var(--dark-grey);
+    padding: 15px 30px;
+    font-family: 'Press Start 2P' , cursive;
+    font-size: 1rem;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    text-shadow: 1px 1px #000;
+}
+#battle-btn:hover, #next-round-btn:hover {
+    background-color: #c44;
+    transform: translateY(-2px);
+}
+#next-round-btn {
+    background-color: var(--poke-blue);
+    display: none;
+}
+
+
+.modal{
+    display: flex;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.6);
+    justify-content: center;
+    align-items: center;
+}
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 30px;
+    border: 5px solid var(--dark-grey);
+    width: 80%;
+    max-width: 500px;
+    border-radius: 15px;
+    text-align: center;
+    animation: slide-down 0.5s;
+}
+@keyframes slide-down{
+    from{ transform: translateY(-50px); opacity: 0;}
+    to{transform: translateY(0); opacity: 1;}
+}
+.modal-content h2{
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+}
+#new-game-btn {
+    background-color: var(--poke-yellow);
+    color: var(--dark-grey);
+    border: 2px solid var(--dark-grey);
+    padding: 15px 30px;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 1rem;
+    border-radius: 10px;
+    cursor: pointer;
+}

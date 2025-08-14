@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokemon Battle Game</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css"> 
+</head>
+<body>
+
+    <h1> POKEMON BATTLE ARENA </h1>
+
+    <div class="scoreboard">
+    <h2>SCOREBOARD</h2>
+    <p><strong>PLAYER:</strong><span id="player-score">0</span></p>
+    <p><strong>CPU:</strong><span id="cpu-score">0</span></p>
+    </div>
+
+    <div class="search-container">
+        <input type="text" id="pokemon-search" placeholder="search for your pokemon....">
+        <div id="suggestions-box"></div>
+    </div>
+
+    <div id="game-container">
+        <div class="pokemon-card" id="player-card"></div>
+        <div id="battle-controls">
+            <h2 id="message-area">CHOOSE YOUR FIGHTER!</h2>
+            <button id="battle-btn">BATTLE!</button>
+            <button id="next-round-btn">NEXT ROUND</button>
+        </div>
+
+        <div class="pokemon-card" id="cpu-card"></div>
+    </div>
+    <div id="winner-modal" class="modal">
+        <div class="modal-content">
+            <h2 id="modal-winner-text">PLAYER WON THE MATCH!</h2>
+            <button id="new-game-btn">NEW GAME</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+    
+</body>
+</html>
